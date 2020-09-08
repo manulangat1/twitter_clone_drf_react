@@ -34,7 +34,7 @@ class Like(models.Model):
 
 class Tags(models.Model):
     name = models.CharField(max_length=50)
-    posts = models.ManyToManyField(Post,related_name="tags_posta")
+    posts = models.ManyToManyField('Post',related_name="tags_posta")
 
     def __str__(self):
         return self.name

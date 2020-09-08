@@ -23,17 +23,17 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class TagDetailSerializer(serializers.ModelSerializer):
-    posts = serializers.SerializerMethodField()
+    post = serializers.SerializerMethodField()
     class Meta:
         model = Tags
         fields = (
             'id',
             'name',
-            'posts'
+            'post'
         )
-    def get_posts(self,obj):
-        print(obj)
-        return PostDetailSerializer(obj.tags.all(),many=True).data
+    def get_post(self,obj):
+        # print(obj)
+        return PostSerializer(obj.tags_posta.all(),many=True).data
 
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
