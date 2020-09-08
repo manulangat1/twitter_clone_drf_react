@@ -3,8 +3,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-from ..serializers.Post import PostSerializer,CommentSerializer,PostDetailSerializer,LikeSerializer
-from ..models import Post,Comment,Like
+from ..serializers.Post import (
+    PostSerializer, CommentSerializer,
+    PostDetailSerializer, LikeSerializer, 
+    TagSerializer )
+from ..models import Post,Comment,Like,Tags
+
+
+class TagList(generics.ListCreateAPIView):
+    serializer_class = TagSerializer
+    queryset = Tags.objects.all()
+
 
 
 class LikeList(generics.ListAPIView):
