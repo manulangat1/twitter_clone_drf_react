@@ -31,5 +31,8 @@ class Like(models.Model):
     def __str__(self):
         return self.tweet.text
 
-# class Tags(models.Model):
-#     name = models.CharField(max_lengt)
+class Tags(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
