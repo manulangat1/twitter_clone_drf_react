@@ -9,6 +9,9 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     queryset = Post.objects.order_by('-pub_date').all()
 
+    def perform_create(self, serializer):
+        return serializer.save(slug=self.request.data['text'])
+
 class PostRetrieve(generics.RetrieveAPIView):
     serializer_class = PostSerializer
     queryset =  Post.objects.all()

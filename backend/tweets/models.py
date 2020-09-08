@@ -5,6 +5,7 @@ from django.db import models
 
 class Post(models.Model):
     text = models.TextField(max_length=260)
+    slug = models.TextField(default="Hey")
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
