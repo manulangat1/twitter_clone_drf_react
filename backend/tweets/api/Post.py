@@ -15,7 +15,7 @@ class PostList(generics.ListCreateAPIView):
 class PostRetrieve(generics.RetrieveAPIView):
     serializer_class = PostSerializer
     queryset =  Post.objects.all()
-
+    lookup_field = ('slug')
 class PostUserOps(generics.RetrieveAPIView,generics.UpdateAPIView,generics.DestroyAPIView):
     serializer_class = PostSerializer
     queryset =  Post.objects.all()
