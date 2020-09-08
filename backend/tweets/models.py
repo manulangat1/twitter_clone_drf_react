@@ -7,6 +7,7 @@ class Post(models.Model):
     text = models.TextField(max_length=260)
     slug = models.TextField(default="Hey")
     pub_date = models.DateTimeField(auto_now_add=True)
+    tags = models.ManyToManyField('Tags')
 
     def __str__(self):
         return self.text
