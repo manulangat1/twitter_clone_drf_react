@@ -22,6 +22,16 @@ class LikeSerializer(serializers.ModelSerializer):
             'dislikes'
         )
 
+class LikeDSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = (
+            'id',
+            # 'tweet',
+            'likes',
+            'dislikes'
+        )
+
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post 
@@ -29,12 +39,13 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PostDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
-    # comments_count = serializers.SerializerMethodField()
+    likes = serializers.SerializerMethodField()
     class Meta:
         model = Post 
-        fields = ('id','text','comments')
+        fields = ('id','text','comments','likes')
     def get_comments(self,obj):
         return CommentSerializer(obj.tweets.all(),many=True).data
-    # def get_comments_count(self,obj):
-    #     return CommentSerializer(obj.tweets.count()).data
+    def get_likes(self,obj):
+        print(obj)
+        return LikeDSerializer(obj.tweet_like.all(),many=True).data
 

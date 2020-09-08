@@ -1,14 +1,41 @@
 from rest_framework import generics,permissions
 from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 from ..serializers.Post import PostSerializer,CommentSerializer,PostDetailSerializer,LikeSerializer
 from ..models import Post,Comment,Like
 
 
-class LikeList(generics.ListCreateAPIView):
+class LikeList(generics.ListAPIView):
     serializer_class = LikeSerializer
     queryset = Like.objects.all()
+
+class LikeCreate(APIView):
+    def post(self,request):
+        post = request.data['tweet']
+        comment =  Like.objects.filter(tweet=post)
+        posts = Post.objects.filter(id=post)
+        print(comment)
+        
+        if posts.exists():
+            print(posts[0])
+            if comment.exists() and len(comment)> 0:
+                print("hey")
+                # comment.likes +=  1 
+                cmt = comment[0]
+                cmt.likes += 1
+                cmt.save()
+
+            else:
+                comment = Like(tweet=posts)
+                comment.likes = 1 
+                comment.dislikes = 1 
+                comment.save()
+            return Response("Done")
+        else:
+            return Response("Hey")
+
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
