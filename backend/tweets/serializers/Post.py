@@ -32,7 +32,7 @@ class TagDetailSerializer(serializers.ModelSerializer):
             'posts'
         )
     def get_posts(self,obj):
-        return PostDetailSerializer(obj.tags.all(),many=True).data
+        return PostDetailSerializer(obj.ta.all(),many=True).data
 
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:

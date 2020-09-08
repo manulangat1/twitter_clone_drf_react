@@ -6,14 +6,17 @@ from rest_framework.response import Response
 from ..serializers.Post import (
     PostSerializer, CommentSerializer,
     PostDetailSerializer, LikeSerializer, 
-    TagSerializer )
+    TagSerializer, TagDetailSerializer )
 from ..models import Post,Comment,Like,Tags
 
 
-class TagList(generics.ListCreateAPIView):
+class TagCreate(generics.CreateAPIView):
     serializer_class = TagSerializer
     queryset = Tags.objects.all()
 
+class TagList(generics.ListAPIView):
+    serializer_class = TagDetailSerializer
+    queryset = Tags.objects.all()
 
 
 class LikeList(generics.ListAPIView):
@@ -51,7 +54,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.order_by('-pub_date').all()
 
     def perform_create(self, serializer):
-        
+
         return serializer.save(slug=self.request.data['text'])
 
 class PostRetrieve(generics.RetrieveAPIView):
