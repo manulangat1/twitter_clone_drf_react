@@ -2,8 +2,13 @@ from rest_framework import generics,permissions
 from rest_framework.views import APIView
 
 
-from ..serializers.Post import PostSerializer,CommentSerializer,PostDetailSerializer
-from ..models import Post,Comment
+from ..serializers.Post import PostSerializer,CommentSerializer,PostDetailSerializer,LikeSerializer
+from ..models import Post,Comment,Like
+
+
+class LikeList(generics.ListCreateAPIView):
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
 
 class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer

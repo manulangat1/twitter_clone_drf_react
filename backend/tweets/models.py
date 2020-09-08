@@ -24,5 +24,9 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
-    tweet = models.ForeignKey(Post,on_delete=models.CASCADE,related_name="tweets")
-    count = models.PositiveIntegerField(default=0)
+    tweet = models.ForeignKey(Post,on_delete=models.CASCADE,related_name="tweets_like")
+    likes = models.PositiveIntegerField(default=0)
+    dislikes = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.tweet.text
