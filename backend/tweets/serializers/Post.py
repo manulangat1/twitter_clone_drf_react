@@ -19,8 +19,12 @@ class PostSerializer(serializers.ModelSerializer):
 
 class PostDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
+    # comments_count = serializers.SerializerMethodField()
     class Meta:
         model = Post 
         fields = ('id','text','comments')
     def get_comments(self,obj):
         return CommentSerializer(obj.tweets.all(),many=True).data
+    # def get_comments_count(self,obj):
+    #     return CommentSerializer(obj.tweets.count()).data
+

@@ -11,6 +11,9 @@ class Post(models.Model):
     def __str__(self):
         return self.text
 
+    
+
+
 class Comment(models.Model):
     tweet = models.ForeignKey(Post,on_delete=models.CASCADE,related_name="tweets")
     text = models.TextField()
