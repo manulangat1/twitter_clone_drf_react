@@ -22,6 +22,18 @@ class TagSerializer(serializers.ModelSerializer):
         )
 
 
+class TagDetailSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField()
+    class Meta:
+        model = Tags
+        fields = (
+            'id',
+            'name',
+            'posts'
+        )
+    def get_posts(self,obj):
+        return PostDetailSerializer(obj.tags.all(),many=True).data
+
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Like
@@ -50,12 +62,14 @@ class PostSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     likes = serializers.SerializerMethodField()
+    tags = serializers.SerializerMethodField()
     class Meta:
         model = Post 
-        fields = ('id','text','comments','likes')
+        fields = ('id','text','tags','comments','likes')
     def get_comments(self,obj):
         return CommentSerializer(obj.tweets.all(),many=True).data
     def get_likes(self,obj):
-        print(obj)
         return LikeDSerializer(obj.tweet_like.all(),many=True).data
+    def get_tags(self,obj):
+        return TagSerializer(obj.tags.all(),many=True).data
 

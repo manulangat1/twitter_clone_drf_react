@@ -51,6 +51,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.order_by('-pub_date').all()
 
     def perform_create(self, serializer):
+        
         return serializer.save(slug=self.request.data['text'])
 
 class PostRetrieve(generics.RetrieveAPIView):
