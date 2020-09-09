@@ -4,10 +4,16 @@ from ..api.Post import (
     PostList, PostRetrieve,
     PostUserOps, CommentList,
     CommentRetrieve, LikeList,
-    LikeCreate, TagList)
+    LikeCreate, TagList, 
+    RegisterAPI, LoginAPI, 
+    UserAPI
+    )
 
 urlpatterns = [
     path('',PostList.as_view(),name="post_list"),
+    path('register/',RegisterAPI.as_view(),name='registration'),
+    path('login/',LoginAPI.as_view(),name='login'),
+    path('user/',UserAPI.as_view(),name='user'),
     path('post/<slug>/',PostRetrieve.as_view(),name='post_retrieve'),
     path('post/user/<pk>/',PostUserOps.as_view()),
     path('comment/',CommentList.as_view()),
