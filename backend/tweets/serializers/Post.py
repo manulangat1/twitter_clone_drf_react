@@ -31,6 +31,17 @@ class LoginSerializer(serializers.Serializer):
             return user 
         return serializers.ValidationError("Incorrect Credentials sorry")
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User 
+        fields = (
+            'id',
+            'username',
+            'email',
+            'tel_no',
+        )
+
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
