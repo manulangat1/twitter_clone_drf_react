@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ..models import Post,Comment,Like,Tags
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model,authenticate
 
 
 User = get_user_model()
@@ -20,6 +20,16 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(validated_data['email'],validated_data['password'],validated_data['tel_no'])
         user.is_active = False
         return user.save()
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user and user.is_active:
+            return user 
+        return serializers.ValidationError("Incorrect Credentials sorry")
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
