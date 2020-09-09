@@ -1,0 +1,2 @@
+[![Build Status](https://travis-ci.org/manulangat1/twitter_clone_drf_react.svg?branch=master)](https://travis-ci.org/manulangat1/twitter_clone_drf_react)
+![Python application](https://github.com/manulangat1/twitter_clone_drf_react/workflows/Python%20application/badge.svg)
