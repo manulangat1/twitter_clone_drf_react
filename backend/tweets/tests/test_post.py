@@ -31,8 +31,8 @@ def test_postRetrieve(api_client):
     }
     url = reverse('post_list')
     res =  api_client.post(url,posts)
-    # assert res.status_code == 201
-    url1 = reverse('post_retrieve',kwargs={'slug':'now'})
+    yield res
+    url1 = reverse('post_retrieve',kwargs={'slug':"now"})
     res1 = api_client.get(url1)
-    assert res1.status_code == 404
+    assert res1.status_code == 200
 
