@@ -7,8 +7,8 @@ from ..api.Post import (
     LikeCreate, TagList)
 
 urlpatterns = [
-    path('',PostList.as_view()),
-    path('post/<slug>/',PostRetrieve.as_view()),
+    path('',PostList.as_view(),name="post_list"),
+    path('post/<slug>/',PostRetrieve.as_view(),name='post_retrieve'),
     path('post/user/<pk>/',PostUserOps.as_view()),
     path('comment/',CommentList.as_view()),
     path('comment/<pk>/',CommentRetrieve.as_view()),
