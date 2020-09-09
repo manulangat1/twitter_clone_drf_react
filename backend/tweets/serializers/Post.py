@@ -1,6 +1,25 @@
 from rest_framework import serializers
 from ..models import Post,Comment,Like,Tags
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
+
+class RegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User 
+        fields = (
+            'id',
+            'email',
+            'password',
+            'tel_no'
+        )
+    extra_kwargs = {'password':{'write_only':True}}
+
+    def create(self, validated_data):
+        user = User.objects.create_user(validated_data['email'],validated_data['password'],validated_data['tel_no'])
+        user.is_active = False
+        return user.save()
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
