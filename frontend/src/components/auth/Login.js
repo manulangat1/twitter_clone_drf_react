@@ -16,7 +16,7 @@ class Login extends React.Component{
     render(){
         const { email,password } = this.state
         return(
-            <section>
+            <section className="login">
                 <div className="container">
                 <h1>Login</h1>
                 <form onSubmit={this.onSubmit}>
