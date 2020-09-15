@@ -22,11 +22,11 @@ class Login extends React.Component{
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" type="email" placeholder="Enter your email" name="email" value={email} onChange={this.onChange} />
+                        <input type="email" type="email" placeholder="Enter your email" name="email" value={email} onChange={this.onChange} className="form-control" />
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" type="password" placeholder="Enter your password" name="password" value={password} onChange={this.onChange} />
+                        <input type="password" type="password" placeholder="Enter your password" name="password" value={password} onChange={this.onChange} className="form-control" />
                     </div>
                     <input type="submit" value="Sign in" className="primary-btn"/>
                 </form>

@@ -20,6 +20,30 @@ ul li{
   margin: auto;
 }
 
+form{
+  width:80%;
+  margin: auto;
+  padding: 1rem;
+  label{
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .form-control{
+    width: 70%;
+    margin: auto;
+    padding: 0.8rem;
+    margin-bottom: 0.6rem;
+    border-radius: 6px;
+  }
+}
+
+.primary-btn {
+  padding: 0 2rem;
+  height: 1.4rem;
+
+}
+
 // header component styling
 header{
   background: #181817;
