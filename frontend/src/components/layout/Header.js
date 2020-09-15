@@ -1,9 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink} from 'react-router-dom'
 class  Header extends React.Component{
     render(){
+        const { isAuthenticated } = this.props.auth
         const guestLinks = (
-            <ul>
+            <div className="grid">
+                        <h1> <span>TweetMe</span></h1>
+                        <ul>
                     <li>
                         <NavLink to='/'>Home</NavLink>
                         
@@ -13,17 +17,34 @@ class  Header extends React.Component{
                     </li>
                     
                 </ul>
+                    </div>
+            
+        )
+        const authLinks = (
+            <div className="grid">
+                        <h1><NavLink to='/'> <span>TweetMe</span> </NavLink></h1>
+                        <ul>
+                    <li>
+                        
+                        
+                    </li>
+                    <li>
+                        <button className="primary-btn">Logout</button>
+                    </li>
+                    
+                </ul>
+                    </div>
         )
         return(
             <header>
                 <div className="container">
-                    <div className="grid">
-                        <h1> <span>TweetMe</span></h1>
-                    { guestLinks}
-                    </div>
+                    { isAuthenticated ? authLinks : guestLinks}
                 </div>
             </header>
         )
     }
 }
-export default Header
+const mapStateToProps = state => ({
+    auth:state.auth
+})
+export default connect(mapStateToProps)(Header)

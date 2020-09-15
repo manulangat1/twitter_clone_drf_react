@@ -8,7 +8,7 @@ from ..api.Post import (
     RegisterAPI, LoginAPI, 
     UserAPI
     )
-
+from knox import views as knox_views
 urlpatterns = [
     path('',PostList.as_view(),name="post_list"),
     path('register/',RegisterAPI.as_view(),name='registration'),
@@ -20,5 +20,6 @@ urlpatterns = [
     path('comment/<pk>/',CommentRetrieve.as_view()),
     path('like/',LikeList.as_view()),
     path('like/create/',LikeCreate.as_view()),
-    path('tag/',TagList.as_view())
+    path('tag/',TagList.as_view()),
+    path('logout/',knox_views.LogoutView.as_view(),name='logout')
 ]
