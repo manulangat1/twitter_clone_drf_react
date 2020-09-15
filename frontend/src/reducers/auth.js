@@ -1,10 +1,10 @@
-
+import { LOGIN_SUCCESS,LOGIN_FAIL,REGISTER_FAIL,REGISTER_SUCCESS} from '../actions/types'
 
 const intialState = {
     user:null,
-    isAuthenticated:false,
+    isAuthenticated:null,
     isLoading:false,
-    token:null
+    token:localStorage.getItem('token')
 }
 
 export default function(state=intialState,action){
