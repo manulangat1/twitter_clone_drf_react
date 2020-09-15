@@ -17,10 +17,9 @@ class  Header extends React.Component{
             <header>
                 <div className="container">
                     <div className="grid">
-                        <h1>TweetMe Clone</h1>
+                        <h1> <span>TweetMe</span></h1>
                     { guestLinks}
                     </div>
-                
                 </div>
             </header>
         )
