@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Please click here {% req.headers.host %}
