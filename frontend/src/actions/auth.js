@@ -12,8 +12,10 @@ export const login = (email,password) => (dispatch,getState) => {
     axios.post('/api/login/',body,config)
     
         .then( res => {
+            console.log(res.data.token)
             dispatch({
-                type:LOGIN_SUCCESS
+                type:LOGIN_SUCCESS,
+                payload:res.data
             })
         })
         .catch( err => {

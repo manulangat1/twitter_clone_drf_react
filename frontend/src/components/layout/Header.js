@@ -48,4 +48,4 @@ class  Header extends React.Component{
 const mapStateToProps = state => ({
     auth:state.auth
 })
-export default connect(mapStateToProps, {logout})(Header)
+export default connect(mapStateToProps,{logout})(Header)

@@ -12,13 +12,13 @@ const intialState = {
 export default function(state=intialState,action){
     switch(action.type){
         case LOGIN_SUCCESS:
+        case REGISTER_SUCCESS:
             localStorage.setItem('token',action.payload.token)
-            return{
+            return {
                 ...state,
-                user:action.payload.user,
+                ...action.payload,
                 isAuthenticated:true,
                 isLoading:false
-
             }
         case USER_LOADING:
             return {
