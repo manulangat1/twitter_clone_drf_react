@@ -11,8 +11,11 @@ import Dashboard from './components/apps/Dashboard'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import PrivateRoute from './components/common/PrivateRoute'
-
+import {loadUser} from './actions/auth'
 class App extends React.Component{
+  componentDidMount(){
+    store.dispatch(loadUser())
+  }
   render(){
     return(
       <Provider store={store}>

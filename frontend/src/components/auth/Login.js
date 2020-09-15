@@ -1,6 +1,7 @@
 import React from 'react'
-import { NavLink,withRouter} from 'react-router-dom'
+import { NavLink,withRouter,Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
+import { login } from '../../actions/auth'
 
 class Login extends React.Component{
     state = {
@@ -12,8 +13,12 @@ class Login extends React.Component{
         e.preventDefault()
         const { email,password } = this.state
         console.log(email,password)
+        this.props.login(email,password)
     }
     render(){
+        if (this.props.auth.isAuthenticated){
+            return <Redirect to='/' />
+        }
         const { email,password } = this.state
         return(
             <section className="login">
@@ -36,4 +41,7 @@ class Login extends React.Component{
         )
     }
 }
-export default Login
+const mapStateToProps = state => ({
+    auth:state.auth
+})
+export default connect(mapStateToProps,{login})(Login)
