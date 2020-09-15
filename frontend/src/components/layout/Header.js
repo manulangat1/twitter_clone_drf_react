@@ -2,13 +2,26 @@ import React from 'react'
 import { NavLink} from 'react-router-dom'
 class  Header extends React.Component{
     render(){
-        return(
-            <header>
-                <ul>
+        const guestLinks = (
+            <ul>
+                    <li>
+                        <NavLink to='/'>Home</NavLink>
+                        
+                    </li>
                     <li>
                         <NavLink to='/'>Home</NavLink>
                     </li>
                 </ul>
+        )
+        return(
+            <header>
+                <div className="container">
+                    <div className="grid">
+                        <h1>TweetMe Clone</h1>
+                    { guestLinks}
+                    </div>
+                
+                </div>
             </header>
         )
     }

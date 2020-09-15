@@ -17,7 +17,9 @@ class App extends React.Component{
       <section>
         <Header />
         <Switch>
+          <main className="appC">
           <Route  exact path='/' component={Dashboard} />
+          </main>
         </Switch>
         <Footer />
       </section>
