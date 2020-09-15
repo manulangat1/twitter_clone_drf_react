@@ -5,6 +5,8 @@ import './App.css';
 
 import store from './store'
 
+import Footer from './components/layout/Footer'
+
 class App extends React.Component{
   render(){
     return(
@@ -14,7 +16,7 @@ class App extends React.Component{
         <Switch>
         <h1>hey</h1>
         </Switch>
-        
+        <Footer />
       </section>
       </Router>
       </Provider>
