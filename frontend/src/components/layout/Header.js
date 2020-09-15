@@ -9,7 +9,7 @@ class  Header extends React.Component{
                         
                     </li>
                     <li>
-                        <NavLink to='/'>Home</NavLink>
+                        <NavLink to='/login/'>Login</NavLink>
                     </li>
                 </ul>
         )

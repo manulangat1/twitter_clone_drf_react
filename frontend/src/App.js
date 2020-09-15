@@ -8,6 +8,7 @@ import store from './store'
 import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import Dashboard from './components/apps/Dashboard'
+import Login from './components/auth/Login'
 
 class App extends React.Component{
   render(){
@@ -19,6 +20,7 @@ class App extends React.Component{
         <Switch>
           <main className="appC">
           <Route  exact path='/' component={Dashboard} />
+          <Route exact path="/login/" component={Login} />
           </main>
         </Switch>
         <Footer />
