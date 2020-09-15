@@ -1,11 +1,13 @@
 import React from 'react';
 import { Provider} from 'react-redux'
 import { HashRouter as Router,Switch,Route} from 'react-router-dom'
-import './App.css';
+import './App.scss';
 
 import store from './store'
 
 import Footer from './components/layout/Footer'
+import Header from './components/layout/Header'
+import Dashboard from './components/apps/Dashboard'
 
 class App extends React.Component{
   render(){
@@ -13,8 +15,9 @@ class App extends React.Component{
       <Provider store={store}>
         <Router>
       <section>
+        <Header />
         <Switch>
-        <h1>hey</h1>
+          <Route  exact path='/' component={Dashboard} />
         </Switch>
         <Footer />
       </section>
