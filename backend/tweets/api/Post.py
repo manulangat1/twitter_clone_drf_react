@@ -91,6 +91,9 @@ class LikeCreate(APIView):
 
 
 class PostList(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated,
+    ]
     serializer_class = PostSerializer
     queryset = Post.objects.order_by('-pub_date').all()
 
