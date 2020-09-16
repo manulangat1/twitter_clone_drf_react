@@ -22,6 +22,12 @@ class LoadPost extends React.Component{
 
     render(){
         const {posts,hasMore} = this.props
+        const commentp = (
+            <div>
+                
+                
+            </div>
+        )
         return(
             <section>
                 {
@@ -30,6 +36,14 @@ class LoadPost extends React.Component{
                             <NavLink to={`/post/${post.slug}/`}>
                             <h1>{post.text}</h1>
                             </NavLink>
+                            {post.comments ? (
+                                post.comments.map(comment => (
+                                    <div>
+                                        <h1>f</h1>
+                                    </div>
+                                ))
+                            )
+                            : 'NO COMMENT AT THE MOMENT'}
                         </div>
                     ))
                 }
