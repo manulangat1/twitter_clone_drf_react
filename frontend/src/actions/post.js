@@ -31,7 +31,7 @@ export const addPost = ({text,slug}) => (dispatch,getState) => {
 }
 
 export const getPostBySlug = (slug) => (dispatch,getState) => {
-    axios.get(`/api/${slug}/`)
+    axios.get(`/api/post/${slug}/`,tokenConfig(getState))
         .then(res => {
             dispatch({
                 type:POST_DETAIL,

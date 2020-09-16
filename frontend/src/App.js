@@ -8,6 +8,7 @@ import store from './store'
 import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import Dashboard from './components/apps/Dashboard'
+import Post from './components/apps/Post'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import PrivateRoute from './components/common/PrivateRoute'
@@ -25,6 +26,7 @@ class App extends React.Component{
         <Switch>
           <main className="appC">
           <PrivateRoute  exact path='/' component={Dashboard} />
+          <PrivateRoute exact path="/post/:slug/" component={Post} />
           <Route exact path="/login/" component={Login} />
           <Route exact path="/register/" component={Register} />
           </main>

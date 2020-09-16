@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loadPosts } from '../../actions/post'
-
+import { withRouter,NavLink } from 'react-router-dom'
 
 class LoadPost extends React.Component{
     componentDidMount(){
@@ -27,7 +27,9 @@ class LoadPost extends React.Component{
                 {
                     posts && posts.map(post => (
                         <div>
+                            <NavLink to={`/post/${post.slug}/`}>
                             <h1>{post.text}</h1>
+                            </NavLink>
                         </div>
                     ))
                 }

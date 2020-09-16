@@ -11,11 +11,17 @@ class Post extends React.Component{
     }
 
     render(){
-        const {post} = this.props
+
+        const {posts} = this.props
+        const postD = (
+            <div className="container" >
+                <h1>{posts.text}</h1>
+                <p>{posts.slug}</p>
+            </div>
+        )
         return(
             <section>
-                <h1>{post.text}</h1>
-                <p>{post.slug}</p>
+                { posts ? postD : "Soory canr be found"}
             </section>
         )
     }

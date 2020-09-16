@@ -2,7 +2,7 @@ import { LOAD_POSTS , ADD_POST, POST_DETAIL} from '../actions/types'
 
 const intialState = {
     posts:[],
-    post:[],
+    post:{},
     hasMore:true,
     offset:0,
     limit:4

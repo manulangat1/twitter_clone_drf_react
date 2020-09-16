@@ -89,6 +89,14 @@ class LikeCreate(APIView):
         else:
             return Response("Hey")
 
+
+
+class PostRetrieve(generics.RetrieveAPIView):
+    serializer_class = PostDetailSerializer
+    queryset =  Post.objects.all()
+    lookup_field = ('slug')
+
+
 # //infinite filter method 
 def infinite_filter(request):
     limit = request.GET.get('limit')
@@ -121,13 +129,8 @@ class PostList(generics.ListCreateAPIView):
             "has_more":is_there_more_data(request)
         })
     def perform_create(self, serializer):
-
         return serializer.save(slug=self.request.data['text'])
 
-class PostRetrieve(generics.RetrieveAPIView):
-    serializer_class = PostDetailSerializer
-    queryset =  Post.objects.all()
-    lookup_field = ('slug')
 class PostUserOps(generics.RetrieveAPIView,generics.UpdateAPIView,generics.DestroyAPIView):
     serializer_class = PostSerializer
     queryset =  Post.objects.all()
