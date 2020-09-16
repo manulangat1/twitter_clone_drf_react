@@ -16,7 +16,8 @@ class Post extends React.Component{
         const postD = (
             <div className="container" >
                 <h1>{posts.text}</h1>
-                <p>{posts.slug}</p>
+                {/* <p>{posts}</p> */}
+                <p>j</p>
             </div>
         )
         return(
