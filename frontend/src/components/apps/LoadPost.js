@@ -7,6 +7,15 @@ class LoadPost extends React.Component{
     componentDidMount(){
         this.props.loadPosts()
     }
+    constructor(props){
+        super(props)
+        const { hasMore} = this.props 
+        if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight){
+            this.props.loadPosts()
+        }
+    }
+   
+
     render(){
         const {posts} = this.props
         return(
@@ -18,6 +27,8 @@ class LoadPost extends React.Component{
                         </div>
                     ))
                 }
+                {!posts && <div>No more posts ath ethe moment</div>}
+                {!hasMore && <div>No more results </div>}
             </section>
         )
     }
