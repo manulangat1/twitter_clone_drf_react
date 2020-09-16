@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { LOAD_POSTS } from './types'
+import { LOAD_POSTS , ADD_POST} from './types'
 import { tokenConfig} from './auth'
 
 export const loadPosts = () => (dispatch,getState) => {
@@ -14,5 +14,18 @@ export const loadPosts = () => (dispatch,getState) => {
                 payload:res.data
             })
         })
+        .catch(err => console.log(err))
+}
+export const addPost = ({text,slug}) => (dispatch,getState) => {
+    const body = JSON.stringify({text,slug})
+    axios.post('/api/')
+        .then(
+            res => {
+                dispatch({
+                    type:ADD_POST,
+                    payload:res.data
+                })
+            }
+        )
         .catch(err => console.log(err))
 }
