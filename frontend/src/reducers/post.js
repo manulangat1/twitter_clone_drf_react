@@ -1,7 +1,8 @@
-import { LOAD_POSTS , ADD_POST} from '../actions/types'
+import { LOAD_POSTS , ADD_POST, POST_DETAIL} from '../actions/types'
 
 const intialState = {
     posts:[],
+    post:[],
     hasMore:true,
     offset:0,
     limit:4
@@ -22,6 +23,11 @@ export default function(state=intialState,action){
             return{
                 ...state,
                 posts:[action.payload,...state.posts]
+            }
+        case POST_DETAIL:
+            return{
+                ...state,
+                post:action.payload
             }
         default:
             return state

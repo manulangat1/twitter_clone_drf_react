@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { LOAD_POSTS , ADD_POST} from './types'
+import { LOAD_POSTS , ADD_POST, POST_DETAIL} from './types'
 import { tokenConfig} from './auth'
 
 export const loadPosts = () => (dispatch,getState) => {
@@ -27,5 +27,16 @@ export const addPost = ({text,slug}) => (dispatch,getState) => {
                 })
             }
         )
+        .catch(err => console.log(err))
+}
+
+export const getPostById = (slug) => (dispatch,getState) => {
+    axios.get(`/api/${slug}/`)
+        .then(res => {
+            dispatch({
+                type:POST_DETAIL,
+                payload:res.data
+            })
+        })
         .catch(err => console.log(err))
 }
