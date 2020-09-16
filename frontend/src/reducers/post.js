@@ -1,4 +1,4 @@
-import { LOAD_POSTS } from '../actions/types'
+import { LOAD_POSTS , ADD_POST} from '../actions/types'
 
 const intialState = {
     posts:[],
@@ -18,7 +18,11 @@ export default function(state=intialState,action){
                 offset:state.offset+state.limit
 
             }
-        
+        case ADD_POST:
+            return{
+                ...state,
+                posts:[...action.payload,...state]
+            }
         default:
             return state
     }
