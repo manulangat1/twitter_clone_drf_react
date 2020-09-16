@@ -77,15 +77,16 @@ export const logout = () => (dispatch,getState) => {
 
 
 export const tokenConfig = getState => {
-    //GET token 
-    const token = getState().auth.token
+    //GET token
+    const token = getState().auth.token;
 
+    //Headers
     const config = {
         headers:{
             'Content-Type':'application/json'
         }
     }
-    if (token){
+    if(token){
         config.headers['Authorization'] = `Token ${token}`
     }
     return config

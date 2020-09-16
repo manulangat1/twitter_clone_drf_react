@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { LOAD_POSTS } from './types'
-
+import { tokenConfig} from './auth'
 
 export const loadPosts = () => (dispatch,getState) => {
-    const limit = getState.post.limit
-    const offset = getState.post.offset
-    axios.post(`/api/?limit=${limit}&offset=${offset}`)
+    console.log(tokenConfig(getState))
+    const limit = getState().post.limit
+    const offset = getState().post.offset
+
+    axios.get(`/api/?limit=${limit}&offset=${offset}`,tokenConfig(getState))
         .then(res => {
             dispatch({
                 type:LOAD_POSTS,
-                payload:res.dat
+                payload:res.data
             })
         })
         .catch(err => console.log(err))

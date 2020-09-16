@@ -10,14 +10,18 @@ class LoadPost extends React.Component{
     constructor(props){
         super(props)
         const { hasMore} = this.props 
-        if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight){
-            this.props.loadPosts()
+        window.onscroll = () => {
+            if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight){
+                this.props.loadPosts()
+                console.log("hey")
+            }
         }
+        
     }
    
 
     render(){
-        const {posts} = this.props
+        const {posts,hasMore} = this.props
         return(
             <section>
                 {
@@ -36,6 +40,7 @@ class LoadPost extends React.Component{
 const mapStateToProps = state => ({
     posts:state.post.posts,
     limit:state.post.limit,
+    hasMore:state.post.hasMore,
     offset:state.post.offset
 })
 export default connect(mapStateToProps,{loadPosts})(LoadPost)
