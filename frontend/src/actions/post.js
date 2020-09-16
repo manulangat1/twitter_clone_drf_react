@@ -3,6 +3,8 @@ import { LOAD_POSTS } from './types'
 
 
 export const loadPosts = () => (dispatch,getState) => {
+    const limit = getState.post.limit
+    const offset = getState.post.offset
     axios.post(`/api/?limit=${limit}&offset=${offset}`)
         .then(res => {
             dispatch({
