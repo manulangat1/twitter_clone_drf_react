@@ -30,7 +30,7 @@ export const addPost = ({text,slug}) => (dispatch,getState) => {
         .catch(err => console.log(err))
 }
 
-export const getPostById = (slug) => (dispatch,getState) => {
+export const getPostBySlug = (slug) => (dispatch,getState) => {
     axios.get(`/api/${slug}/`)
         .then(res => {
             dispatch({
