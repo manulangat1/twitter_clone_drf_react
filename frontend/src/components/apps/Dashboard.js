@@ -1,11 +1,13 @@
 import React from 'react'
-
+import LoadPost from './LoadPost'
 
 class Dashboard extends React.Component{
     render(){
         return(
             <section>
-                <h1>TweetMe clone, developed by manulangat</h1>
+                <div className="container">
+                <LoadPost />
+                </div>
             </section>
         )
     }
