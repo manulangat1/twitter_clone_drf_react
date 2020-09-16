@@ -16,7 +16,11 @@ class AddPost  extends React.Component{
             text,
             slug
         }
-        this.addPost(newT)
+        this.props.addPost(newT)
+        this.setState({
+            text:"",
+            slug:""
+        })
     }
     render(){
         const { text,slug}  = this.state

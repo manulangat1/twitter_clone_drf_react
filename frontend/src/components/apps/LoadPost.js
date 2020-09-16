@@ -27,7 +27,7 @@ class LoadPost extends React.Component{
                 {
                     posts && posts.map(post => (
                         <div>
-                            <h1>h</h1>
+                            <h1>{post.text}</h1>
                         </div>
                     ))
                 }

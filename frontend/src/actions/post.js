@@ -18,7 +18,7 @@ export const loadPosts = () => (dispatch,getState) => {
 }
 export const addPost = ({text,slug}) => (dispatch,getState) => {
     const body = JSON.stringify({text,slug})
-    axios.post('/api/')
+    axios.post('/api/',body,tokenConfig(getState))
         .then(
             res => {
                 dispatch({
