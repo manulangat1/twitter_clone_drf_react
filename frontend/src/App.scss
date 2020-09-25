@@ -85,7 +85,13 @@ footer{
     font-size: 1.2rem;
   }
 }
-
+.dashboard{
+  padding:2rem;
+  .grid{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+  }
+}
 // main app components
 .appC{
   min-height: 80vh;
