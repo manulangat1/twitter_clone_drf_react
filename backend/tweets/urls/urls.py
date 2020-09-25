@@ -6,11 +6,13 @@ from ..api.Post import (
     CommentRetrieve, LikeList,
     LikeCreate, TagList, 
     RegisterAPI, LoginAPI, 
-    UserAPI
+    UserAPI,
+    PostSave
     )
 from knox import views as knox_views
 urlpatterns = [
     path('',PostList.as_view(),name="post_list"),
+    path('create/',PostSave.as_view(),name="post_create"),
     path('register/',RegisterAPI.as_view(),name='registration'),
     path('login/',LoginAPI.as_view(),name='login'),
     path('user/',UserAPI.as_view(),name='user'),

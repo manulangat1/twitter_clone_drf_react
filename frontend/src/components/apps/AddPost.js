@@ -6,34 +6,28 @@ import { addPost } from '../../actions/post'
 class AddPost  extends React.Component{
     state = {
         "text":"",
-        "slug":""
+        "slug":"jdh"
     }
     onChange = e => this.setState({[e.target.name]:e.target.value})
     onSubmit = e => {
         e.preventDefault()
         const { text,slug}  = this.state
         const newT = {
-            text,
-            slug
+            text,slug
         }
         this.props.addPost(newT)
         this.setState({
-            text:"",
-            slug:""
+            text:""
         })
     }
     render(){
-        const { text,slug}  = this.state
+        const { text}  = this.state
         return(
             <section>
                 <form onSubmit={this.onSubmit}>
                     <div>
                     <label>Tweet</label>
                     <input type="text" value={text} name="text" onChange={this.onChange}  className="form-control" required placeholder="Whats on your mind"/>
-                    </div>
-                    <div>
-                    <label>Slug</label>
-                    <input type="text" value={slug} name="slug" onChange={this.onChange}  className="form-control" required placeholder="Whats on your mind"/>
                     </div>
                     <input type="submit" value="Tweet" className="form-control" />
                 </form>

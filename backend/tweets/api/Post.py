@@ -1,7 +1,7 @@
 from rest_framework import generics,permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from django.utils.text import slugify
 
 from knox.models import AuthToken
 
@@ -128,7 +128,14 @@ class PostList(generics.ListCreateAPIView):
             "posts":serializer.data,
             "has_more":is_there_more_data(request)
         })
+    
+
+class PostSave(generics.CreateAPIView):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+
     def perform_create(self, serializer):
+        slug = self.request.data['text']
         return serializer.save(slug=self.request.data['text'])
 
 class PostUserOps(generics.RetrieveAPIView,generics.UpdateAPIView,generics.DestroyAPIView):
