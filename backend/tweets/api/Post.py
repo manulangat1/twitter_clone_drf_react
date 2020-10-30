@@ -136,7 +136,7 @@ class PostSave(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         slug = self.request.data['text']
-        return serializer.save(slug=self.request.data['text'])
+        return serializer.save(slug=self.request.data['text'],author=self.request.user)
 
 class PostUserOps(generics.RetrieveAPIView,generics.UpdateAPIView,generics.DestroyAPIView):
     serializer_class = PostSerializer

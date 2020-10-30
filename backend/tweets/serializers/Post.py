@@ -106,13 +106,16 @@ class PostDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     likes = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
+    author = serializers.SerializerMethodField()
     class Meta:
         model = Post 
-        fields = ('id','text','tags','comments','likes')
+        fields = ('id','author','text','tags','comments','likes')
     def get_comments(self,obj):
         return CommentSerializer(obj.tweets.all(),many=True).data
     def get_likes(self,obj):
         return LikeDSerializer(obj.tweet_like.all(),many=True).data
     def get_tags(self,obj):
         return TagSerializer(obj.tags.all(),many=True).data
+    def get_author(self,obj):
+        return UserSerializer(obj.author).data
 
